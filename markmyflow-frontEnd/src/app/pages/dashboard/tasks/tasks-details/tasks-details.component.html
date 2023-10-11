@@ -1,0 +1,177 @@
+<!-- MODAL-->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  data-bs-backdrop="false"
+  style="z-index: 9999"
+  tabindex="9999"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  style="margin-top: 200px"
+>
+  <div class="modal-dialog" style="z-index: 9999">
+    <div class="modal-content" style="z-index: 9999">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Assign task to a project
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          #closeModal
+          aria-label="Close"
+        ></button>
+      </div>
+
+      <form>
+        <div class="modal-body scrollable">
+          <table class="basic-table">
+            <tr>
+              <th>Project name</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+
+            <tr *ngFor="let item of projects">
+              <td>
+                <b>{{ item.name }}</b>
+              </td>
+              <td>{{ item.status }}</td>
+              <td>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  (click)="AssignOnClick(item.id)"
+                >
+                  Assign
+                </button>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="overlay"></div>
+  </div>
+</div>
+
+<!-- Titlebar
+================================================== -->
+<div class="single-page-header" data-background-image="images/single-job.jpg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="single-page-header-inner">
+          <div class="left-side">
+            <div class="avatar-container">
+              <app-avatar [name]="task.name"></app-avatar>
+            </div>
+            <div class="header-details">
+              <h3>{{ task.name }}</h3>
+              <ul>
+                <li>Status</li>
+                <li>
+                  <div class="verified-badge-with-title">{{ task.status }}</div>
+                </li>
+                <br />
+                <li>Deadline</li>
+                <li>
+                  <div>{{ task.deadline }}</div>
+                </li>
+                <br />
+              </ul>
+            </div>
+          </div>
+
+          <div class="right-side">
+            <div class="salary-box">
+              <div class="salary-type">Task price</div>
+              <div class="salary-amount">{{ task.price }} $</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+  <div class="row">
+    <!-- Content -->
+    <div class="col-xl-8 col-lg-8 content-right-offset">
+      <div class="single-page-section">
+        <h2 class="margin-bottom-25"><b>Task Description</b></h2>
+        <p>{{ task.description }}</p>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-xl-4 col-lg-4">
+      <div class="sidebar-container">
+        <a
+          href="#small-dialog"
+          class="apply-now-button popup-with-zoom-anim"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          >Assign To A Project<i
+            class="icon-material-outline-arrow-right-alt"
+          ></i
+        ></a>
+        <a
+          [routerLink]="['/dashboard/tasks/update', task.id]"
+          class="apply-now-button popup-with-zoom-anim"
+          >Update Task</a
+        >
+        <a
+          [routerLink]="['/dashboard/tasks/list']"
+          class="apply-now-button popup-with-zoom-anim"
+          (click)="deleteTask(task.id)"
+          >Delete Task</a
+        >
+        <a
+          [routerLink]="['/dashboard/mission/missionlist', task.id]"
+          class="apply-now-button popup-with-zoom-anim"
+          >View missions</a
+        >
+        <!-- Sidebar Widget -->
+        <div class="sidebar-widget">
+          <div class="job-overview">
+            <div class="job-overview-headline">Summary</div>
+            <div class="job-overview-inner">
+              <ul>
+                <li>
+                  <i class="icon-material-outline-access-time"></i>
+                  <span>Task debute</span>
+                  <h5>{{ task.debute }}</h5>
+                </li>
+                <li>
+                  <i class="icon-material-outline-access-time"></i>
+                  <span>Task deadline</span>
+                  <h5>{{ task.deadline }}</h5>
+                </li>
+                <li>
+                  <i class="icon-material-outline-local-atm"></i>
+                  <span>Paiement</span>
+                  <h5>{{ task.price }} USD</h5>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<form (ngSubmit)="updatequ()" >
+
+   
+    <input type="text" name="text" [(ngModel)]="quest.question" placeholder="modifier le question" />
+    <input type="text" name="text" [(ngModel)]="quest.prop1" placeholder="modifier la premiere proposition" />
+    <input type="text" name="text" [(ngModel)]="quest.prop2" placeholder="modifier la deuxieme proposition" />
+    <input type="text" name="text" [(ngModel)]="quest.prop3" placeholder="modifier vla 3eme proposition" />
+    <textarea type="text" name="text" [(ngModel)]="quest.propvrai" placeholder="modifier la proposition vraie"></textarea> 
+    <th>
+    </th>
+    <button type="submit">validate</button>
+    <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="dashboard/question/questionlist">Back</a></li>
+      </ul>
+</form>

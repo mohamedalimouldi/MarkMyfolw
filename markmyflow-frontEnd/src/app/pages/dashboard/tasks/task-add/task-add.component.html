@@ -1,0 +1,184 @@
+<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+      <div class="notification success closeable" [hidden]="!divVisible">
+        <p>Task added successfully</p>
+        <a class="close" href=""></a>
+      </div>
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Post a Task</h3>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>Post a Task</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Row -->
+			<div class="row">
+        <form (ngSubmit)="onSubmit()">
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-feather-folder-plus"></i> Task Submission Form</h3>
+						</div>
+
+						<div class="content with-padding padding-bottom-10">
+							<div class="row">
+
+								<div class="col-xl-4">
+									<div class="submit-field">
+										<h5>Name</h5>
+										<input type="text" class="with-border" placeholder="e.g. Designing a logo" id="name" name="name"
+                    required
+                    [(ngModel)]="task.name"
+                    #nameInput="ngModel"
+                    [class.is-invalid]="nameInput.invalid && nameInput.touched"
+                    required
+                    >
+
+                    <div *ngIf="nameInput.errors && nameInput.touched">
+                      <span class="text-danger" *ngIf="nameInput.errors['required']">
+                        Task name is required
+                      </span>
+                      <span class="text-danger" *ngIf="!isNameValid">
+                        Invalid name
+                      </span>
+                    </div>
+									</div>
+								</div>
+
+								<div class="col-xl-6">
+									<div class="submit-field">
+										<h5>Select a debute date and a deadline.</h5>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" type="Date" placeholder="Minimum" id="debute" name="debute"
+                          required
+                          [(ngModel)]="task.debute"
+                          [class.is-invalid]="debuteInput.invalid && debuteInput.touched"
+                          [required]="true" #debuteInput="ngModel"
+                          (input)="validateForm()"
+                          >
+                          <div *ngIf="debuteInput.errors && debuteInput.touched">
+                            <span class="text-danger" *ngIf="debuteInput.errors['required']">
+                              Task debute date is required
+                            </span>
+                            <span class="text-danger" *ngIf="!isDebuteDateValid">
+                              Invalid debute date
+                            </span>
+                          </div>
+												</div>
+											</div>
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" type="Date" placeholder="Maximum"  id="deadline" name="deadline"
+                          required
+                          [(ngModel)]="task.deadline"
+                          [class.is-invalid]="deadlineInput.invalid && deadlineInput.touched"
+                          [required]="true" #deadlineInput="ngModel"
+                          (input)="validateForm()">
+
+                          <div *ngIf="deadlineInput.errors && deadlineInput.touched">
+                            <span class="text-danger" *ngIf="deadlineInput.errors['required']">
+                              Task deadline date is required
+                            </span>
+                            <span class="text-danger" *ngIf="!isDeadlineValid">
+                              Invalid deadline date
+                            </span>
+                          </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+                <div class="col-xl-6">
+									<div class="submit-field">
+										<h5>What is your estimated budget?</h5>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" type="text" placeholder="Task price" id="price" name="price"
+                          required
+                          [(ngModel)]="task.price"
+                          #priceInput="ngModel"
+                          [class.is-invalid]="priceInput.invalid && priceInput.touched"
+                          required
+                          >
+													<i class="currency">USD</i>
+                          <div *ngIf="priceInput.errors && priceInput.touched">
+                            <span class="text-danger" *ngIf="priceInput.errors['required']">
+                              Task price is required
+                            </span>
+                            <span class="text-danger" *ngIf="!isPriceValid">
+                              Invalid price
+                            </span>
+                          </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                <div class="col-xl-4">
+									<div class="submit-field">
+										<h5>Payed task?</h5>
+										<div class="feedback-yes-no margin-top-0">
+											<div class="radio">
+												<input id="radio-1" name="radio" type="radio" checked value="true"  required [(ngModel)]="task.payed">
+												<label for="radio-1"><span class="radio-label"></span> Yes</label>
+											</div>
+
+											<div class="radio">
+												<input id="radio-2" name="radio" type="radio" value="false" required [(ngModel)]="task.payed">
+												<label for="radio-2"><span class="radio-label"></span> No</label>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-xl-12">
+									<div class="submit-field">
+										<h5>Describe Your task</h5>
+										<textarea cols="30" rows="5" class="with-border" id="description" name="description"
+                    required
+                    [(ngModel)]="task.description"
+                    #descriptionInput="ngModel"
+                    [class.is-invalid]="descriptionInput.invalid && descriptionInput.touched"
+                    required
+                    ></textarea>
+
+                    <div *ngIf="descriptionInput.errors && descriptionInput.touched">
+                      <span class="text-danger" *ngIf="descriptionInput.errors['required']">
+                        Task description is required
+                      </span>
+                      <span class="text-danger" *ngIf="!isDescriptionValid">
+                        Invalid description
+                      </span>
+                    </div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-12">
+          <button class="button ripple-effect big margin-top-30" type="submit" [ngClass]="{'unclickable': !validForm}"><i class="icon-feather-plus"></i>Post Task</button>
+        </div>
+      </form>
+			</div>
+			<!-- Row / End -->

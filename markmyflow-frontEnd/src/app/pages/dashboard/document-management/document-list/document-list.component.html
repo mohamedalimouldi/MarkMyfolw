@@ -1,0 +1,228 @@
+
+											
+<div class="modal fade" #Modal id="exampleModal"  data-bs-backdrop="false" style=" z-index: 9999" tabindex="9999" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" style=" z-index: 9999">
+	  <div class="modal-content" style=" z-index: 9999">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Add document</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" #closeModal aria-label="Close"></button>
+		</div>
+		<form  [formGroup]="DocForm" (ngSubmit)="submit()" >
+
+		<div class="modal-body">
+			<div class="mb-3">
+			  <label for="text" class="col-form-label">Name:</label>
+			  <input type="text" class="form-control" id="text"  formControlName = "text">
+			  <span class="help-block" *ngIf="!DocForm.get('text').valid">
+			  <span *ngIf = "DocForm.get('text').errors['required']">field is required</span>
+			  </span>
+			</div>
+			<div class="mb-3">
+				<label for="text" class="col-form-label">Fields:</label>
+				<tag-input 
+				(onSelect)="onSelect($event)"
+				formControlName = "fields"
+				[modelAsStrings]="true">
+	 		</tag-input>
+			 <span class="help-block" *ngIf="!DocForm.get('fields').valid">
+				<span *ngIf = "DocForm.get('fields').errors['required']">field is required</span>
+				</span>
+			</div>
+			<div class="mb-3">
+				<label for="file">File</label>
+				<input 
+					formControlName="file"
+					id="file" 
+					type="file" 
+					class="form-control"
+					(change)="onFileChange($event)">
+				<div *ngIf="!DocForm.get('file').valid" class="alert alert-danger">
+					<div *ngIf="DocForm.get('file').errors['required']">File is required.</div>
+				</div>
+
+
+
+			</div>
+		
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+
+	  </div>
+	</div>
+  </div>
+
+
+
+  <div class="modal fade" #RequestModal id="requestModal"  data-bs-backdrop="false" style=" z-index: 9999" tabindex="9999" role="dialog" aria-labelledby="requestModal">
+	<div class="modal-dialog" style=" z-index: 9999">
+	  <div class="modal-content" style=" z-index: 9999">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Request document</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" #closeReqModal aria-label="Close"></button>
+		</div>
+
+		<div class="modal-body" *ngIf="requestedDoc">
+			<div class="mb-3">
+			  <label for="text" class="col-form-label">Title :</label>
+			  <input type="text" class="form-control" id="text" >
+			 
+			</div>
+			<div class="mb-3">
+				<label for="text" class="col-form-label">Fields:</label>
+				<table>
+					<tr>
+						<td>Title</td>
+						<td>Value</td>
+					</tr>
+					<tr *ngFor="let f of requestedDoc.fields;let i=index">
+						<td>{{f}}</td>
+						<td>
+							<input type="text" class="form-control" [(ngModel)]="fieldsMap[f]"/>
+						</td>
+					</tr>
+				</table>
+		
+			</div>
+			
+		
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary" (click)="doneRequest()">Submit</button>
+		</div>
+
+	  </div>
+	</div>
+  </div>
+
+		<div class="dashboard-content-inner" >
+			
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Manage Docs</h3>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>Manage Docs</li>
+					</ul>
+				</nav>
+			</div>
+	
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-material-outline-business-center"></i> Docs</h3>
+						</div>
+						<button type="button" class="btn btn-primary" #OpenModal data-bs-toggle="modal" data-bs-target="#exampleModal">
+							Add
+						  </button>
+						  <button type="button" class="btn btn-primary" hidden #RequestModalButton data-bs-toggle="modal" data-bs-target="#requestModal">
+							requestModal
+						  </button>
+						  
+						<div class="content">
+							<ul class="dashboard-box-list">
+								<li *ngFor="let doc of docs;let i=index">
+									<!-- Job Listing -->
+									<div class="job-listing">
+
+										<!-- Job Listing Details -->
+										<div class="job-listing-details">
+
+											<!-- Logo -->
+<!-- 											<a href="#" class="job-listing-company-logo">
+												<img src="images/company-logo-05.png" alt="">
+											</a> -->
+
+											<!-- Details -->
+											<div class="job-listing-description">
+												<h3 class="job-listing-title"><a href="#">{{doc.text}}</a> <span class="dashboard-status-button green">{{doc.fields.length}} Fields</span></h3>
+
+												<!-- Job Listing Footer -->
+												<div class="job-listing-footer">
+													<ul>
+														<li><i class="icon-material-outline-date-range"></i> Posted on 10 July, 2018</li>
+														<li><i class="icon-material-outline-date-range"></i> Expiring on 10 August, 2018</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Buttons -->
+									<div class="buttons-to-right always-visible">
+										<a [href]="urlDownload+doc.path" download="word" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Download </a>
+										<a  class="button gray ripple-effect ico" title="Edit" data-tippy-placement="top" (click)="openEdit(doc,i)"><i class="icon-feather-edit"></i></a>
+										
+
+										<a class="button gray ripple-effect ico" title="Remove" (click)="delete(doc.idDocument,i)" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
+										<a  title="RequestDoc" data-tippy-placement="top" (click)="prepareDocument(doc)" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Request </a>
+
+									</div>
+								</li>
+
+							
+
+							</ul>
+
+
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+			<!-- Footer -->
+		<!-- Footer -->
+		
+        <div class="dashboard-footer-spacer"></div>
+        <div class="small-footer margin-top-15">
+            <div class="small-footer-copyrights">
+                © 2018 <strong>Hireo</strong>. All Rights Reserved.
+            </div>
+            <ul class="footer-social-links">
+                <li>
+                    <a href="#" title="Facebook" data-tippy-placement="top">
+                        <i class="icon-brand-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Twitter" data-tippy-placement="top">
+                        <i class="icon-brand-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Google Plus" data-tippy-placement="top">
+                        <i class="icon-brand-google-plus-g"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="LinkedIn" data-tippy-placement="top">
+                        <i class="icon-brand-linkedin-in"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <!-- Footer / End -->
+			<!-- Footer / End -->
+
+		</div>
+
+	

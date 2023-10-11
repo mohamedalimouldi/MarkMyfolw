@@ -1,0 +1,80 @@
+<!-- Spacer -->
+<div class="mt-5"></div>
+<!-- Spacer / End-->
+
+<!-- Page Content
+================================================== -->
+
+
+
+<div class="container" style="margin-bottom: 200px;">
+	<div class="row">
+	
+		<div class="col-xl-12 col-lg-12 content-left-offset">
+
+			<h3 class="page-title text-center mb-4">Tests</h3>
+
+			<div class="notify-box mb-4">
+				<div class="form-check form-switch mb-3">
+					<input class="form-check-input" type="checkbox" id="emailAlertsSwitch">
+					<label class="form-check-label" for="emailAlertsSwitch">Turn on email alerts for this search</label>
+				</div>
+
+				<div class="input-group">
+					<span class="input-group-text">Sort by:</span>
+					<select class="form-select">
+						<option>Relevance</option>
+						<option>Newest</option>
+						<option>Oldest</option>
+						<option>Random</option>
+					</select>
+				</div>
+			</div>
+
+			<ul ngbNav #nav="ngbNav" class="nav nav-tabs mb-4">
+				<li ngbNavItem *ngFor="let q of testvv.questions;let i=index">
+					<a ngbNavLink>{{q.question}}</a>
+					<ng-template ngbNavContent>
+						<div class="mt-4">
+							<p class="card"><a id="qcm" style="color: rgb(0, 0, 255);">A : </a>{{q.prop1}}</p>
+							<p class="card"><a id="qcm" style="color: rgb(0, 0, 255);">B : </a>{{q.prop2}}</p>
+							<p class="card"><a id="qcm" style="color: rgb(0, 0, 255);">C : </a>{{q.prop3}}</p>
+							<div class="form-group">
+								<select class="form-select" [(ngModel)]="responses[i]">
+									<option [value]="''">Select Reponse</option>
+									<option>a</option>
+									<option>b</option>
+									<option>c</option>
+								</select>
+							</div>
+						</div>
+					
+					</ng-template>
+				</li>
+				<li ngbNavItem >
+					<a ngbNavLink>Finish Test</a>
+					<ng-template ngbNavContent>
+						
+						<!-- ajout de design -->
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card shadow mb-4">
+						<div class="card-body">
+							<h4 class="card-title">envoyer votre reponse</h4>
+							<p class="card-text">pour afficher votre score </p>
+							<button class="btn btn-primary" (click)="addReponses()">Sauvegarder</button>
+
+						</div>
+					</div>
+				</div>
+			</div>
+					</ng-template>
+				</li>
+				
+			</ul>
+			<div [ngbNavOutlet]="nav"></div>
+			<div class="mt-4">
+				<a href="/test/generate" class="btn btn-primary" >back to test</a></div>
+
+			
+			

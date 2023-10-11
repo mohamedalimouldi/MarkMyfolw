@@ -1,0 +1,132 @@
+<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+
+
+      <div class="notification warning closeable" [hidden]="!divVisible">
+        <p>Task updated successfully</p>
+        <a class="close" href=""></a>
+      </div>
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Edit a Task</h3>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>Edit a Task</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Row -->
+			<div class="row">
+        <form (ngSubmit)="onUpdate()">
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-feather-folder-plus"></i> Task Edit Form</h3>
+						</div>
+
+						<div class="content with-padding padding-bottom-10">
+							<div class="row">
+
+								<div class="col-xl-4">
+									<div class="submit-field">
+										<h5>Name</h5>
+										<input type="text" class="with-border" placeholder="e.g. Designing a logo" id="name" name="name" required [(ngModel)]="taskRetrieved.name">
+									</div>
+								</div>
+
+								<div class="col-xl-6">
+									<div class="submit-field">
+										<h5>Select a debute date and a deadline.</h5>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" type="Date" placeholder="Minimum" id="debute" name="debute" required [(ngModel)]="taskRetrieved.debute">
+												</div>
+											</div>
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" type="Date" placeholder="Maximum"  id="deadline" name="deadline" required [(ngModel)]="taskRetrieved.deadline">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+
+
+                <div class="col-xl-6">
+									<div class="submit-field">
+										<h5>What is your estimated budget?</h5>
+										<div class="row">
+											<div class="col-xl-6">
+												<div class="input-with-icon">
+													<input class="with-border" type="text" placeholder="Task price" id="price" name="price" required [(ngModel)]="taskRetrieved.price">
+													<i class="currency">USD</i>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Status</h5>
+                  </div>
+                  <div>
+                  <select class="selectpicker with-border" name="status" [(ngModel)]="taskRetrieved.status" value={{taskRetrieved.status}}>
+                    <option value="DRAFT">DRAFT</option>
+                    <option value="ASSIGNED">ASSIGNED</option>
+                    <option value="CLOSED">CLOSED</option>
+                  </select>
+                </div>
+                </div>
+
+
+
+                <div class="feedback-yes-no margin-top-0">
+                  <div class="submit-field">
+                    <h5>Is this task payed ?</h5>
+                  </div>
+                  <div class="radio">
+                    <input id="radio-1" name="payed" type="radio" value="true" [(ngModel)]="paid" [checked]="taskRetrieved.payed">
+                    <label for="radio-1"><span class="radio-label"></span> Yes</label>
+                  </div>
+                  <div class="radio">
+                    <input id="radio-2" name="payed" type="radio" value="false"  [checked]="!taskRetrieved.payed">
+                    <label for="radio-2"><span class="radio-label"></span> No</label>
+                  </div>
+                </div>
+
+
+								<div class="col-xl-12">
+									<div class="submit-field">
+										<h5>Describe Your task</h5>
+										<textarea cols="30" rows="5" class="with-border" id="description" name="description" required [(ngModel)]="taskRetrieved.description"></textarea>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-xl-12">
+          <button class="button ripple-effect big margin-top-30" type="submit"><i class="icon-feather-plus"></i>Edit Task</button>
+        </div>
+      </form>
+			</div>
+			<!-- Row / End -->
+
+
+
+

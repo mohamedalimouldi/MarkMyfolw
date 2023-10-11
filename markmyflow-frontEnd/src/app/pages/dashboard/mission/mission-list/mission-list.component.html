@@ -1,0 +1,86 @@
+<a [routerLink]="['/dashboard/mission/addmission',id]"><span class="button button-sliding-icon ripple-effect" >Add mission <i class="icon-material-outline-arrow-right-alt"></i></span></a>
+<div class="clearfix"></div>
+
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+
+
+
+	<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+			
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Manage Missions</h3>
+
+			</div>
+	
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-material-outline-assignment"></i> My Missions</h3>
+						</div>
+
+						<div class="content">
+							<ul class="dashboard-box-list">
+								<li *ngFor="let line of data" >
+									<!-- Job Listing -->
+									<div class="job-listing width-adjustment">
+
+										<!-- Job Listing Details -->
+										<div class="job-listing-details">
+
+											<!-- Details -->
+											<div class="job-listing-description">
+												<h3 class="job-listing-title"><a href="#">{{ line.titleMission }}</a> <span class="dashboard-status-button yellow">test</span></h3>
+
+												<!-- Job Listing Footer -->
+												<div class="job-listing-footer">
+													<ul>
+														<li><i class="icon-material-outline-access-time"></i> Required prior to : {{ line.deadlineMission }}</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<!-- Task Details -->
+									<ul class="dashboard-task-info">
+										<li><strong>10</strong><span>participant</span></li>
+										<li><strong>{{ line.priceMission }} DT</strong><span>Price</span></li>
+									</ul>
+
+									<!-- Buttons -->
+									<div class="buttons-to-right always-visible">
+										<a href="dashboard-manage-bidders.html" class="button ripple-effect"  [routerLink]="['/dashboard/mission/applications/', line.idMission]"><i class="icon-material-outline-supervisor-account"></i> Manage Applications </a>
+										<a href="#" class="button gray ripple-effect ico" title="Edit" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
+										<a class="button gray ripple-effect ico" title="Remove" data-tippy-placement="top" (click)="deleteMission(line.idMission)"><i class="icon-feather-trash-2"></i></a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+
+		</div>
+	</div>
+	<!-- Dashboard Content / End -->
+
+</div>
+<!-- Dashboard Container / End -->
+
+<!-- Wrapper / End -->
+

@@ -1,0 +1,303 @@
+<!-- Dashboard Container -->
+<!-- Dashboard Content
+	================================================== -->
+<div class="dashboard-content-inner">
+  <!-- Dashboard Headline -->
+  <div class="dashboard-headline">
+    <h3>Companys</h3>
+    <!-- Breadcrumbs -->
+    <nav id="breadcrumbs" style="margin: 0;">
+      <input
+      type="text"
+      id="nomEquipe"
+      placeholder="Saisissez le nom de votre equipe"
+      [(ngModel)]="searchTerm"
+      (keyup)="onSearch()"
+      style="    margin-bottom: 0px;
+      "
+      
+    />
+
+    </nav>
+  </div>
+
+  <!-- Row -->
+  <div class="row">
+    <!-- Dashboard Box -->
+    <div class="col-xl-12">
+      <div class="dashboard-box margin-top-0">
+        <!-- Headline -->
+        <div class="headline">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>
+                <i class="icon-material-outline-business-center"></i> Companys
+              </h3>
+            </div>
+
+            <div class="col-sm-6">
+              <button
+                style="margin-left: 56%"
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModals"
+                #OpenModal
+              >
+                Add Company
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="content">
+          <div
+            class="modal fade"
+            id="exampleModals"
+            data-bs-backdrop="false"
+            tabindex="-1"
+            role="dialog"
+            style="margin-top: 4%"
+            aria-labelledby="myModalLabel"
+          >
+            <div class="modal-dialog" style="z-index: 9999">
+              <div class="modal-content" style="z-index: 9999">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Add Company
+                  </h5>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <form [formGroup]="DocForm" (ngSubmit)="onSubmit()">
+                      <div class="modal-body">
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label">Name:</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="name"
+                            formControlName="name"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('name').valid"
+                          >
+                            <span *ngIf="DocForm.get('name').errors['required']"
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >Email:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="email"
+                            formControlName="email"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('email').valid"
+                          >
+                            <span
+                              *ngIf="DocForm.get('email').errors['required']"
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >codefiscal:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="codefiscal"
+                            formControlName="codefiscal"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('codefiscal').valid"
+                          >
+                            <span
+                              *ngIf="
+                                DocForm.get('codefiscal').errors['required']
+                              "
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >number:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="number"
+                            formControlName="number"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('number').valid"
+                          >
+                            <span
+                              *ngIf="DocForm.get('number').errors['required']"
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >nameuser:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="nameuser"
+                            formControlName="nameuser"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('nameuser').valid"
+                          >
+                            <span
+                              *ngIf="DocForm.get('nameuser').errors['required']"
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >lastname:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="lastnuser"
+                            formControlName="lastnuser"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('lastnuser').valid"
+                          >
+                            <span
+                              *ngIf="
+                                DocForm.get('lastnuser').errors['required']
+                              "
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >emailUser:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="emailUser"
+                            formControlName="emailUser"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('emailUser').valid"
+                          >
+                            <span
+                              *ngIf="
+                                DocForm.get('emailUser').errors['required']
+                              "
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="text" class="col-form-label"
+                            >password:</label
+                          >
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="password"
+                            formControlName="password"
+                          />
+                          <span
+                            class="help-block"
+                            *ngIf="!DocForm.get('password').valid"
+                          >
+                            <span
+                              *ngIf="DocForm.get('password').errors['required']"
+                              >field is required</span
+                            >
+                          </span>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                          #closeModal
+                        >
+                          Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Submit
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul class="dashboard-box-list">
+            <li *ngFor="let c of filterData; let i = index">
+              <!-- Job Listing -->
+              <div class="job-listing">
+                <!-- Job Listing Details -->
+                <div class="job-listing-details">
+                  <div class="job-listing-description">
+                    <h3 class="job-listing-title">
+                      <a href="#">{{ c.name }}</a>
+                      <span class="dashboard-status-button green"
+                        >Pending Approval</span
+                      >
+                    </h3>
+                    <!-- Job Listing Footer -->
+                  </div>
+                </div>
+              </div>
+              <!-- Buttons -->
+              <div class="buttons-to-right always-visible">
+                <a
+                  [routerLink]="['/dashboard/managecompany/details', c.id]"
+                  class="button ripple-effect"
+                  ><i class="icon-material-outline-supervisor-account"></i>
+                  Details
+                </a>
+                <a
+                  (click)="openEdit(c, i)"
+                  class="button gray ripple-effect ico"
+                  title="Edit"
+                  data-tippy-placement="top"
+                  ><i class="icon-feather-edit"></i
+                ></a>
+                <a
+                  (click)="deleteCompany(c.id)"
+                  class="button gray ripple-effect ico"
+                  title="Remove"
+                  data-tippy-placement="top"
+                  ><i class="icon-feather-trash-2"></i
+                ></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

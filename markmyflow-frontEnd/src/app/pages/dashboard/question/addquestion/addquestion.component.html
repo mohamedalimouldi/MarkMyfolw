@@ -1,0 +1,115 @@
+<form (ngSubmit)="affect(quest,id)" >
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="text" [(ngModel)]="quest.question" placeholder="Entrer une question" 
+  required
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required/>
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      question is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="text" [(ngModel)]="quest.prop1" placeholder="Entrer la première proposition" 
+  required
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required/>
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      proposition 1) is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="text" [(ngModel)]="quest.prop2" placeholder="Entrer la deuxième proposition"
+  required
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required 
+  />
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      proposition 2) is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="text" [(ngModel)]="quest.prop3" placeholder="Entrer la troisième proposition"
+  required
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required />
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      proposition 3) is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <textarea name="text" [(ngModel)]="quest.propvrai" placeholder="Entrer la proposition vraie"></textarea>
+  
+  <div class="button-group">
+    <button type="submit" class="button button-sliding-icon ripple-effect">Valider<i class="icon-material-outline-arrow-right-alt"></i></button>
+    <h2><div class="form-text textarea" style="color: blue; align-content: center;">
+      {{this.a}}
+
+    </div></h2>
+    <ul class="nav nav-tabs">
+      <a routerLink="/dashboard/test/addtest" class="btn btn-primary">Retour aux tests</a>
+     
+    </ul>
+    <button class="btn btn-primary" style="align-content: end;" onclick="location.reload()">Actualiser</button>
+
+  </div>
+
+</form>

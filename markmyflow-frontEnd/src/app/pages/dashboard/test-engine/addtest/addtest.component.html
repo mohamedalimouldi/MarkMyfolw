@@ -1,0 +1,85 @@
+<form (ngSubmit)="addquiz()" #form="ngForm">
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="titre" [(ngModel)]="test.titre" placeholder="Entre titre de test" required
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required>
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      titre is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <input type="text" name="duree" [(ngModel)]="test.duree" placeholder="Entrer duree de test"
+  required
+  #numberInput="ngModel"
+  [class.is-invalid]="
+    numberInput.invalid && numberInput.touched
+  "
+  required />
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <div *ngIf="numberInput.errors && numberInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="numberInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="numberInput.errors['required']"
+    >
+      duree is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <input type="number" name="pts" [(ngModel)]="test.pts" placeholder="Entre points de test " required min="0" max="100" 
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required/>
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      titre is required
+    </span>
+  </div>
+  </div>
+  </div>
+  
+  
+  <div>
+    
+  <button class="btn btn-primary" type="submit" >Valider</button>
+  
+
+  <div style="margin-bottom: 20px;"></div>
+  <ul class="nav nav-tabs">
+    <a routerLink="/dashboard/test/testlist" class="btn btn-primary">Retour à la liste</a>
+  </ul>
+</div>
+
+</form>

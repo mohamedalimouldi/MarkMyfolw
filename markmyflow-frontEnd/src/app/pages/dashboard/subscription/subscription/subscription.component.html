@@ -1,0 +1,239 @@
+<div
+class="modal fade"
+id="exampleModals"
+data-bs-backdrop="false"
+tabindex="-1"
+role="dialog"
+style="margin-top: 4%"
+aria-labelledby="myModalLabel"
+>
+<div class="modal-dialog" style="z-index: 9999">
+  <div class="modal-content" style="z-index: 9999">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">
+        Add document
+      </h5>
+    </div>
+    <div class="modal-body">
+      <div class="mb-3">
+        <form [formGroup]="DocForm" (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="text" class="col-form-label">prixAbon:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="prixAbon"
+                formControlName="prixAbon"
+              />
+              <span
+                class="help-block"
+                *ngIf="!DocForm.get('prixAbon').valid"
+              >
+                <span *ngIf="DocForm.get('prixAbon').errors['required']"
+                  >field is required</span
+                >
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="text" class="col-form-label"
+                >dateDebut:</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="dateDebut"
+                formControlName="dateDebut"
+              />
+              <span
+                class="help-block"
+                *ngIf="!DocForm.get('dateDebut').valid"
+              >
+                <span
+                  *ngIf="DocForm.get('dateDebut').errors['required']"
+                  >field is required</span
+                >
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="text" class="col-form-label"
+                >dateFin:</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="dateFin"
+                formControlName="dateFin"
+              />
+              <span
+                class="help-block"
+                *ngIf="!DocForm.get('dateFin').valid"
+              >
+                <span
+                  *ngIf="
+                    DocForm.get('dateFin').errors['required']
+                  "
+                  >field is required</span
+                >
+              </span>
+            </div>
+            <div class="mb-3">
+              <label for="text" class="col-form-label"
+                >typeSubscription:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="typeSubscription"
+                formControlName="typeSubscription"
+              />
+              <span
+                class="help-block"
+                *ngIf="!DocForm.get('typeSubscription').valid"
+              >
+                <span
+                  *ngIf="DocForm.get('typeSubscription').errors['required']"
+                  >field is required</span
+                >
+              </span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              #closeModal
+            >
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- Dashboard Content
+	================================================== -->
+ 
+    <div class="dashboard-content-inner">
+      <!-- Dashboard Headline -->
+      <div class="dashboard-headline">
+        <h3>My Active Bids</h3>
+
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li>My Active Bids</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Row -->
+      <div class="row">
+        <!-- Dashboard Box -->
+        <div class="col-xl-12">
+          <div class="dashboard-box margin-top-0">
+            <!-- Headline -->
+            <div class="headline">
+              <div class="row">
+            <div class="col-sm-6">
+              <h3>
+                <i class="icon-material-outline-business-center"></i> Subscriptions
+              </h3>
+            </div>
+
+            <div class="col-sm-6">
+              <button
+                style="margin-left: 56%"
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModals"
+                #OpenModal
+              >
+                Add Subscription
+              </button>
+            </div>
+          </div>
+            </div>
+
+            <div class="content">
+              <ul class="dashboard-box-list">
+                <li *ngFor="let s of subscriptions; let i = index ">
+                  <!-- Job Listing -->
+                  <div class="job-listing width-adjustment">
+                    <!-- Job Listing Details -->
+                    <div class="job-listing-details">
+                      <!-- Details -->
+                      <div class="job-listing-description">
+                        <h3 class="job-listing-title">
+                          <a href="#"> </a>
+                          <li *ngIf="s.entreprise">
+                            Company: {{ s.entreprise.name }}
+                          </li>
+                        </h3>
+                        <div class="job-listing-footer">
+                          <ul>
+                            <li>
+                              <h5>
+                                Type: <span>{{ s.typeSubscription }}</span>
+                              </h5>
+                            </li>
+                            <li>
+                              <i class="icon-material-outline-date-range"></i>
+                              Posted {{ s.dateDebut }}
+                            </li>
+                            <li>
+                              <i class="icon-material-outline-date-range"></i>
+                              Expiring on {{ s.dateFin }}
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Task Details -->
+                  <ul class="dashboard-task-info">
+                    <li>
+                      <strong>${{ s.prixAbon }}</strong
+                      ><span> Prix</span>
+                    </li>
+                  </ul>
+
+                  <!-- Buttons -->
+                  <div class="buttons-to-right always-visible">
+                    <a
+                    (click)="openEdit(s, i)"
+                      class="popup-with-zoom-anim button dark ripple-effect ico"
+                      title="Edit Bid"
+                      data-tippy-placement="top"
+                      ><i class="icon-feather-edit"></i
+                    ></a>
+                    <a
+                      (click)=" deleteSubscription(s.id)"
+                      class="button red ripple-effect ico"
+                      title="Cancel Bid"
+                      data-tippy-placement="top"
+                      ><i class="icon-feather-trash-2"></i
+                    ></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Row / End -->
+    </div>
+
+<!-- Dashboard Container / End -->
+
+<!-- Wrapper / End -->

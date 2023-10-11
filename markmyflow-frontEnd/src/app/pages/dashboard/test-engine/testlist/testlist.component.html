@@ -1,0 +1,40 @@
+<li class="job-listing-li">
+  <!-- Job Listing -->
+  <a routerLink="/dashboard/test/addtest" class="button ripple-effect button-new-test"><i class="icon-material-outline-add"></i> New Test</a>
+
+  <div *ngFor="let x of quiz let i=index" class="job-listing">
+
+    <!-- Job Listing Details -->
+    <div class="job-listing-details">
+
+      <!-- Details -->
+      <div class="job-listing-description">
+        <h1 class="job-listing-title"><a href="#">{{x.idv }}{{a}}</a> <h2></h2><span class="dashboard-status-button yellow" ><h2>{{x.titre}}</h2></span></h1>
+
+        <!-- Job Listing Footer -->
+        <div class="job-listing-footer">
+          <ul>
+           <h2> <li><i class="icon-material-outline-date-range"></i> duree : {{x.duree}}</li></h2> 
+           <h2> <li><i class="icon-material-outline-date-range"></i> points : {{x.pts}}</li></h2>
+          </ul>
+
+          <div *ngFor="let z of this.x.questions  let i=index" class="job-listing">
+            <ul>
+             <a class="class" style="color: blueviolet;">{{z.idq}}{{a}}</a> <li><i class=""></i> {{z.question}}</li>
+              <li><i class=""></i><a style="color: dodgerblue;">prop1 :</a> {{z.prop1}}</li>
+              <li><i class=""></i><a style="color: dodgerblue;">prop2 :</a> {{z.prop2}}</li>
+              <li><i class=""></i><a style="color: dodgerblue;">prop3 :</a> {{z.prop3}}</li>
+            </ul>
+            <li><i class=""></i><a style="color: dodgerblue;">prop vrai :</a> {{z.propvrai}}</li>
+          </div>
+
+          <!-- Buttons -->
+          <div class="job-listing-buttons">
+            <a routerLink="/dashboard/test/updatetest/{{x.idv}}" class="button ripple-effect button-edit"><i class="icon-feather-edit"></i> Edit</a>
+            <a class="button gray ripple-effect ico button-delete" (click)="delete(x.idv,i)" data-tippy-placement="top"><i class="icon-feather-trash-2"></i> Remove</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</li>

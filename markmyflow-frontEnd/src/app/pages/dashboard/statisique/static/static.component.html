@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row">
+    <form #myForm="ngForm" (ngSubmit)="submited(); myForm.reset()">
+      <div class="form-group">
+        <label for="startDate">year</label>
+        <input
+          type="text"
+          class="form-control"
+          id="year"
+          name="year"
+          [(ngModel)]="year"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit">Search</button>
+      </div>
+    </form>
+    <div
+      data-v-6a145b43
+      class="chart-view"
+      style="width: 70%; height: 70%;"
+    >
+      <canvas #mychart2 width="105" height="42"></canvas>
+    </div>
+
+    <div class="col-md-12">
+      <form #myForm="ngForm" (ngSubmit)="onSubmit(); myForm.reset()">
+        <div class="form-group">
+          <label for="startDate">Start Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            name="startDate"
+            [(ngModel)]="dateDebut"
+            required
+            #nameInput="ngModel"
+            [class.is-invalid]="nameInput.invalid && nameInput.touched"
+            required
+          />
+
+          <div *ngIf="nameInput.errors && nameInput.touched">
+            <small class="text-danger" *ngIf="nameInput.errors['required']">
+            </small>
+            <small class="text-danger" *ngIf="nameInput.errors['required']">
+              date is required
+            </small>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="endDate">End Date:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="endDate"
+            name="endDate"
+            [(ngModel)]="dateFin"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+      </form>
+      <div data-v-6a145b43 class="chart-editor">
+        <div data-v-6a145b43 class="chart-view">
+          <canvas
+            #myChart
+            width="105"
+            height="42"
+            style="
+              display: block;
+              box-sizing: border-box;
+              height: 42px;
+              width: 84px;
+            "
+          ></canvas>
+        </div>
+      </div>
+      <h4>The total subscription price is {{ abonPrixTotal }}</h4>
+    </div>
+    <div>
+      <h3>Select a company:</h3>
+      <select
+        [(ngModel)]="selectedCompanyId"
+        (change)="onCompanyChange($event)"
+      >
+        <option value="">Select a company</option>
+        <option *ngFor="let company of companies" [value]="company.id">
+          {{ company.name }}
+        </option>
+      </select>
+    </div>
+    <div data-v-6a145b43 class="chart-view">
+      <canvas
+        #barChart
+        width="105"
+        height="42"
+        style="
+          display: block;
+          box-sizing: border-box;
+          height: 42px;
+          width: 84px;
+        "
+      ></canvas>
+    </div>
+  </div>
+</div>

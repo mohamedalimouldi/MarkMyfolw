@@ -1,0 +1,24 @@
+
+<div id="wrapper">
+    <app-navbar [HeaderClass]="'dashboard-header not-sticky'"></app-navbar>
+    <div class="dashboard-container">
+
+        <!-- Dashboard Sidebar
+        ================================================== -->
+        <app-sidebar class="dashboard-sidebar"></app-sidebar>
+        <!-- Dashboard Sidebar / End -->
+
+
+        <!-- Dashboard Content
+        ================================================== -->
+        <div class="dashboard-content-container" data-simplebar>
+      <router-outlet ></router-outlet>
+    </div>
+        <!-- Dashboard Content / End -->
+
+    </div>
+    <!-- Dashboard footer
+        ================================================== -->
+
+        <!-- Dashboard footer / End -->
+</div>

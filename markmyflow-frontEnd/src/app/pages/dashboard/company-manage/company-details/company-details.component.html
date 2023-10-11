@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+  
+  <div class="col-xl-12 col-md-12">
+
+    <div class="section-headline margin-top-30 margin-bottom-30">
+      <h4>Copany</h4>
+    </div>
+    <table class="basic-table">
+      <tr>
+        <th>Name </th>
+        <th>Email</th>
+        <th>codefiscal</th>
+        <th>address</th>
+        <th>number</th>
+        <th>usermane</th>
+        <th>userLastName</th>
+        <th>EmailUser</th>
+        
+      </tr>
+      <tr>
+        <td data-label="Column 1">{{company.name}}</td>
+        <td data-label="Column 2">{{company.email}}</td>
+        <td data-label="Column 3">{{ company.codefiscal }}</td>
+        <td data-label="Column 4">{{ company.address }}</td>
+        <td data-label="Column 5">{{ company.number }}</td>
+        <td data-label="Column 6">{{ company.nameuser }}</td>
+        <td data-label="Column 7">{{company.lastnuser}}</td>
+        <td data-label="Column 8">{{company.emailUser}}</td>
+        
+      </tr> 
+    </table>
+  </div>
+</div>
+
+</div>
+<div class="container">
+  <div class="row">
+  
+  <div class="col-xl-6 col-md-6">
+
+    <div class="section-headline margin-top-30 margin-bottom-30">
+      <h4>Projects</h4>
+    </div>
+    <table class="basic-table">
+
+      <tr>
+        <th>name </th>
+        <th>date debute</th>
+        <th>deadline</th>
+        <th>description</th>
+        <th>Status</th>
+      </tr>
+
+      <tr *ngFor="let s of des">
+        <td data-label="Column 1">{{s.name}}</td>
+        <td data-label="Column 2">{{s.debute}}</td>
+        <td data-label="Column 3">{{s.deadline}}</td>
+        <td data-label="Column 4">{{s.description}}</td>
+        <td data-label="Column 5">{{s.status}}</td>
+      </tr> 
+    </table>
+  </div>
+</div>
+
+</div>
+

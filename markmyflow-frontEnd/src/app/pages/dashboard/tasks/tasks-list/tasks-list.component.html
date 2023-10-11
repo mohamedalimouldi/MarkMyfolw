@@ -1,0 +1,85 @@
+<!-- Dashboard Content
+	================================================== -->
+	<div class="dashboard-content-container" data-simplebar>
+		<div class="dashboard-content-inner" >
+
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Manage Tasks</h3><br>
+        <div class="col-xl-2" >
+          <a [routerLink]="['/dashboard/tasks/add']" class="apply-now-button popup-with-zoom-anim">Create Task<i class="icon-material-outline-add"></i></a>
+        </div>
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>Manage Tasks</li>
+					</ul>
+				</nav>
+			</div>
+
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-material-outline-assignment"></i> My Tasks </h3>
+						</div>
+
+						<div class="content">
+							<ul class="dashboard-box-list">
+
+
+								<li *ngFor="let task of tasks">
+									<!-- Job Listing -->
+									<div class="job-listing width-adjustment" >
+
+										<!-- Job Listing Details -->
+										<div class="job-listing-details">
+
+											<!-- Details -->
+											<div class="job-listing-description">
+												<h3 class="job-listing-title"><a [routerLink]="['/dashboard/tasks/details', task.id]"> {{task.name}}</a> <span class="dashboard-status-button yellow">{{task.status}}</span></h3>
+
+                        <li>{{task.description}}</li>
+
+												<!-- Job Listing Footer -->
+												<div class="job-listing-footer">
+													<ul *ngIf="this.calculateDiff(task.debute)>0">
+														<li><i class="icon-material-outline-access-time"></i> {{this.calculateDiff(task.debute)}} Days to start</li>
+													</ul>
+                          <ul *ngIf="this.calculateDiff(task.debute)<=0">
+														<li><i class="icon-material-outline-access-time"></i> Already started</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- Task Details -->
+									<ul class="dashboard-task-info" *ngIf="task.payed==true;">
+										<li><strong>Payed</strong><span>Payment status</span></li>
+									</ul>
+                  <ul class="dashboard-task-info" *ngIf="task.payed==false;">
+										<li><strong>Not payed</strong><span>Payment status</span></li>
+									</ul>
+
+									<!-- Buttons -->
+									<div class="buttons-to-right always-visible">
+										<a [routerLink]="['/dashboard/tasks/details', task.id]" class="button ripple-effect"><i class="icon-material-outline-supervisor-account"></i> Details</a>
+                    <a [routerLink]="['/dashboard/tasks/update', task.id]"  class="button gray ripple-effect ico" title="Edit" data-tippy-placement="top"><i class="icon-feather-edit"></i></a>
+										<a class="button gray ripple-effect ico" title="Remove" data-tippy-placement="top" (click)="deleteTask(task.id)"><i class="icon-feather-trash-2"></i></a>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+
+			</div>

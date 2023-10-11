@@ -1,0 +1,73 @@
+<!-- Spacer -->
+<div class="margin-top-90"></div>
+<!-- Spacer / End-->
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+	<div class="row">
+	
+		<div class="col-xl-12 col-lg-12 content-left-offset">
+
+			<h3 class="page-title">Tests</h3>
+
+			<div class="notify-box margin-top-15">
+				<div  class="switch-container">
+					<label class="switch">
+						<input type="checkbox">
+						<span class="switch-button"></span>
+						<span class="switch-text">Turn on email alerts for this search</span>
+					</label>
+				</div>
+			</div>
+
+			<div class="listings-container grid-layout margin-top-35">
+
+				<!-- Job Listing -->
+				<div *ngFor="let x of tests" class="job-listing">
+					<!-- Job Listing Details -->
+					<div class="job-listing-details">
+						<!-- Logo -->
+						
+
+						<!-- Details -->
+						<div class="job-listing-description" >
+							<div class="title-duration-container">
+								<h2 class="job-listing-title">titre : {{x.titre}}</h2>
+								<h2 class="job-listing-title" >duree : {{x.duree}}</h2>
+							</div>
+						</div>
+					</div>
+
+					<!-- Image -->
+					<div class="job-listing-description" style="text-align: center; display: flex; justify-content: center; align-items: center;">
+						<img src="./assets/images/test/img.jpg" alt="">
+					  </div>
+					  
+
+					<!-- Job Listing Footer -->
+					<div class="job-listing-footer">
+						<div class="company-logo">
+							<img src="" alt="">
+						</div>
+						<div class="job-listing-footer-text">
+							
+							<qrcode [qrdata]="MyAngularxQrCode+x.idv"[width]="90" [errorCorrectionLevel]="'M'" style="float: right;"></qrcode>
+							
+							<div style="display: flex; justify-content: center; align-items: center; height: 20vh;">
+								<div style="display: flex; justify-content: center; align-items: center; height: 20vh; position: relative;">
+									<ul>
+										<h2><li><i class="icon-material-outline-business-center" > /{{x.pts}}</i></li></h2>
+									</ul>
+
+                            <a [routerLink]="['/test/vu',x.idv]" href="single-job-page.html" class="button button-sliding-icon ripple-effect">Démarrer<i class="icon-material-outline-arrow-right-alt"></i></a>
+						
+						</div>
+					</div>
+				</div>
+				<!-- Job Listing / End -->
+
+			</div>
+		</div>
+	</div>
+</div>

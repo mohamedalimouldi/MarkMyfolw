@@ -1,0 +1,84 @@
+
+<form (ngSubmit)="updatequ()">
+
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="{{test.titre}}" [(ngModel)]="test.titre" placeholder="entre titre de test" required
+  #nameInput="ngModel"
+  [class.is-invalid]="
+  nameInput.invalid && nameInput.touched
+  "
+  required> 
+  <div *ngIf="nameInput.errors && nameInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="nameInput.errors['required']"
+    >
+      titre is required
+    </span>
+  </div>
+  </div>
+  </div>
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="{{test.duree}}" [(ngModel)]="test.duree" placeholder="entre duree de test " required
+  #numberInput="ngModel"
+  [class.is-invalid]="
+    numberInput.invalid && numberInput.touched
+  "
+  required />
+  <div *ngIf="numberInput.errors && numberInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="numberInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="numberInput.errors['required']"
+    >
+      duree is required
+    </span>
+  </div>
+  </div>
+  </div>
+  
+  <div class="col-xl-4">
+    <div class="submit-field">
+  <input type="text" name="{{test.pts}}" [(ngModel)]="test.pts" placeholder="modifier le score de test" required
+  #codefiscalInput="ngModel"
+  [class.is-invalid]="
+  codefiscalInput.invalid && codefiscalInput.touched
+  "
+  required />
+  <div *ngIf="codefiscalInput.errors && codefiscalInput.touched">
+    <span
+      class="text-danger"
+      *ngIf="codefiscalInput.errors['required']"
+    >
+    </span>
+    <span
+      class="text-danger"
+      *ngIf="codefiscalInput.errors['required']"
+    >
+      total points is required
+    </span>
+  </div>
+  </div>
+  </div>
+
+    <th>
+    </th>
+    <button type="submit" class="btn btn-primary">validate</button>
+    <div style="margin-bottom: 20px;"></div>
+        <ul class="nav nav-tabs">
+      <a routerLink="/dashboard/test/testlist" class="btn btn-primary"> back to list</a>
+  </ul>
+
+</form>
+

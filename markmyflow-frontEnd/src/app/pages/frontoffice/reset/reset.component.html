@@ -1,0 +1,76 @@
+<br><br><br><br><br>
+            <h1> My ip address :  {{IpAddressInReset}} {{title}} chika </h1>
+
+            <br><br>
+       
+
+
+            
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+	<div class="row" >
+		<div class="col-xl-5 offset-xl-3">
+
+
+			<div class="login-register-page">
+				<!-- Welcome Text -->
+				<div class="welcome-text">
+					<h3>Reset Your Password here! </h3>
+					<span>Don't want to reset your password?  <a [routerLink]="'/register'">Sign In</a></span>
+				</div>
+				
+				<!-- Form -->
+				<form method="post" [formGroup]="resetForm" id="reset-form" #Form="ngForm">
+                    <div class="input-with-icon-left">
+                      <i class="icon-material-outline-settings"></i>
+                      <input type="text" class="input-text with-border"  id="code" placeholder="Code" formControlName="code" required >
+                      <div class="error-message" *ngIf="resetForm.controls['code'].invalid && (resetForm.controls['code'].dirty || resetForm.controls['code'].touched)">
+                        <p *ngIf="resetForm.controls['code'].errors?.required">Code is required here ! </p>
+                      </div>
+                    </div>
+                  
+                    <div class="input-with-icon-left">
+                      <i class="icon-material-outline-lock"></i>
+                      <input type="password" class="input-text with-border"  id="password" placeholder="Password"  formControlName="password"  required >
+                      <div class="error-message" *ngIf="resetForm.controls['password'].invalid && (resetForm.controls['password'].dirty || resetForm.controls['password'].touched)" >
+                        <p  *ngIf="resetForm.controls['password'].errors?.required">New Password is required.</p>
+                      </div>
+                    </div>
+                  <br>
+                    <button class="button full-width left button-sliding-icon ripple-effect margin-top-10 " (click)="fromControl()" form="reset-form">Reset <i class="icon-material-outline-autorenew"></i></button>
+					<button class="button half-width button-sliding-icon effe-effect margin-top-10"  (click)="goToAuthenticate()" form="reset-form"><i class="icon-material-outline-arrow-right-alt"></i>  Back </button>
+				<br>	
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<!-- Spacer -->
+<div class="margin-top-70"></div>
+<!-- Spacer / End-->
+<!--   
+<table class="table">
+	<thead>
+	  <tr>
+		<th scope="col">Showing the user infos 4 Test</th>
+		<th scope="col">Firstname </th>
+		<th scope="col">Lastname</th>
+		<th scope="col">Username</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr *ngFor="let p of userList">
+		
+		<td>{{p.firstname}}</td>
+		<td>{{p.lastname}}</td>
+		<td>{{p.username}}</td>
+		<td>{{p.password}}</td>
+		<td>{{p.email}}</td>
+	  </tr>
+	</tbody>
+  </table> -->

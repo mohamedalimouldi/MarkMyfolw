@@ -1,0 +1,82 @@
+<div class="container">
+
+<div class="example-container">
+  <h3>0 - DRAFT</h3>
+  <br>
+  <div
+    cdkDropList
+    #todoList="cdkDropList"
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList, closedList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of todo" cdkDrag>
+      <div>
+        <app-avatar [name]="item.name"></app-avatar>
+      </div>
+      <a [routerLink]="['/dashboard/tasks/details', item.id]" >
+        <h5>
+          <strong>{{ item.name }}</strong><br /><br />
+          {{ item.debute }}
+        </h5>
+      </a>
+      </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h3>1 - ASSIGNED</h3>
+  <br>
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    [cdkDropListConnectedTo]="[todoList, closedList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of done" cdkDrag>
+      <div>
+        <app-avatar [name]="item.name"></app-avatar>
+      </div>
+      <a [routerLink]="['/dashboard/tasks/details', item.id]" >
+        <h5>
+          <strong>{{ item.name }}</strong><br /><br />
+          {{ item.debute }}
+        </h5>
+      </a>
+      </div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h3>2 - CLOSED</h3>
+  <br>
+  <div
+    cdkDropList
+    #closedList="cdkDropList"
+    [cdkDropListData]="closed"
+    [cdkDropListConnectedTo]="[todoList, doneList]"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+
+  <div class="example-box" *ngFor="let item of closed" cdkDrag>
+    <div>
+      <app-avatar [name]="item.name"></app-avatar>
+    </div>
+    <a [routerLink]="['/dashboard/tasks/details', item.id]" >
+      <h5>
+        <strong>{{ item.name }}</strong><br /><br />
+        {{ item.debute }}
+      </h5>
+    </a>
+    </div>
+
+  </div>
+</div>
+<div class="col-xl-12">
+  <button class="button ripple-effect big margin-top-30" type="submit" (click)="updateStatus()"><i class="icon-line-awesome-edit"></i> Update status</button>
+</div>
+</div>

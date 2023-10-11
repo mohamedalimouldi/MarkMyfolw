@@ -1,0 +1,138 @@
+
+<!-- Dashboard Content
+	================================================== -->
+<div class="dashboard-content-container" data-simplebar>
+  <div class="dashboard-content-inner">
+
+
+    <div class="notification success closeable" [hidden]="!divVisible">
+      <p>Project added successfully</p>
+      <a class="close" href=""></a>
+    </div>
+
+
+
+    <!-- Dashboard Headline -->
+    <div class="dashboard-headline">
+      <h3>Post a Project</h3>
+
+      <!-- Breadcrumbs -->
+      <nav id="breadcrumbs" class="dark">
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Dashboard</a></li>
+          <li>Post a Project</li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Row -->
+    <div class="row">
+      <form (ngSubmit)="onSubmit()">
+      <!-- Dashboard Box -->
+      <div class="col-xl-12">
+        <div class="dashboard-box margin-top-0">
+          <!-- Headline -->
+          <div class="headline">
+            <h3>
+              <i class="icon-feather-folder-plus"></i> Project Submission Form
+            </h3>
+          </div>
+            <div class="content with-padding padding-bottom-10">
+              <div class="row">
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Name</h5>
+                    <input type="text" class="with-border" placeholder="e.g. Company website" id="name" name="name"
+                    [(ngModel)]="project.name"
+                    required
+                    #nameInput="ngModel"
+                    [class.is-invalid]="nameInput.invalid && nameInput.touched"
+                    required
+
+                    >
+
+                    <div *ngIf="nameInput.errors && nameInput.touched">
+                      <span class="text-danger" *ngIf="nameInput.errors['required']">
+                        Project name is required
+                      </span>
+                      <span class="text-danger" *ngIf="!isNameValid">
+                        Invalid name
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Debute Date</h5>
+                    <input type="date" class="with-border" id="project_debute" name="project_debute"
+                      [(ngModel)]="project.debute"
+                      [class.is-invalid]="debuteInput.invalid && debuteInput.touched"
+                      [required]="true" #debuteInput="ngModel"
+                      (input)="validateForm()">
+
+                    <div *ngIf="debuteInput.errors && debuteInput.touched">
+                      <span class="text-danger" *ngIf="debuteInput.errors['required']">
+                        Project debute date is required
+                      </span>
+                      <span class="text-danger" *ngIf="!isDebuteDateValid">
+                        Invalid debute date
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Deadline</h5>
+                    <input type="date" class="with-border" id="project_debute" name="project_debute"
+                      [(ngModel)]="project.deadline"
+                      [class.is-invalid]="deadlineInput.invalid && deadlineInput.touched"
+                      [required]="true" #deadlineInput="ngModel"
+                      (input)="validateForm()">
+
+                    <div *ngIf="deadlineInput.errors && deadlineInput.touched">
+                      <span class="text-danger" *ngIf="deadlineInput.errors['required']">
+                        Project deadline date is required
+                      </span>
+                      <span class="text-danger" *ngIf="!isDeadlineValid">
+                        Invalid deadline date
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Status</h5>
+                    <button class="button gray" data-tippy-placement="top" data-tippy="" data-original-title="ON HOLD"
+                      value="ON_HOLD">ON HOLD</button>
+                  </div>
+                </div>
+
+
+                <div class="col-xl-12">
+                  <div class="submit-field">
+                    <h5>Project Description</h5>
+                    <textarea cols="30" rows="5" class="with-border" id="project_description"name="project_description" required [(ngModel)]="project.description" ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="col-xl-12">
+        <button class="button ripple-effect big margin-top-30" type="submit" [ngClass]="{'unclickable': !validForm}" ><i class="icon-feather-plus"></i> Post Project</button>
+      </div>
+    </form>
+
+    <!-- Row / End -->
+
+
+  </div>
+</div>
+<!-- Dashboard Content / End -->

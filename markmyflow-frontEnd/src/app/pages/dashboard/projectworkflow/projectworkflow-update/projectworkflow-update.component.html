@@ -1,0 +1,96 @@
+<!-- Dashboard Content
+	================================================== -->
+  <div class="dashboard-content-container" data-simplebar>
+    <div class="dashboard-content-inner">
+      <div class="notification warning closeable" [hidden]="!divVisible">
+      <p>Project updated successfully</p>
+      <a class="close" href=""></a>
+    </div>
+
+      <!-- Dashboard Headline -->
+      <div class="dashboard-headline">
+        <h3>Edit Project</h3>
+
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Dashboard</a></li>
+            <li>Edit Project</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Row -->
+      <div class="row">
+      <form (ngSubmit)="onUpdate()">
+        <!-- Dashboard Box -->
+        <div class="col-xl-12">
+          <div class="dashboard-box margin-top-0">
+            <!-- Headline -->
+            <div class="headline">
+              <h3>
+                <i class="icon-feather-folder-plus"></i> Project Edit Form
+              </h3>
+            </div>
+              <div class="content with-padding padding-bottom-10">
+                <div class="row">
+                  <div class="col-xl-4">
+                    <div class="submit-field">
+                      <h5>Name</h5>
+                      <input type="text" class="with-border" placeholder="e.g. Company website" id="name" name="name" required [(ngModel)]="projectRetrieved.name">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-4">
+                    <div class="submit-field">
+                      <h5>Debute Date</h5>
+                      <input type="date" class="with-border" id="debute" name="debute" required [(ngModel)]="projectRetrieved.debute">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-4">
+                    <div class="submit-field">
+                      <h5>Deadline</h5>
+                      <input type="date" class="with-border" id="deadline" name="deadline" required [(ngModel)]="projectRetrieved.deadline">
+                    </div>
+                  </div>
+
+                  <div class="col-xl-4">
+                    <div class="section-headline margin-top-25 margin-bottom-12">
+                      <h5>Status</h5>
+                    </div>
+
+                    <select class="selectpicker" name="status" [(ngModel)]="projectRetrieved.status" value={{projectRetrieved.status}}>
+                      <option value="ACTIVE">ACTIVE</option>
+                      <option value="COMPLETED">COMPLETED</option>
+                      <option value="CANCELLED">CANCELLED</option>
+                      <option value="ON_HOLD">ON_HOLD</option>
+                    </select>
+                  </div>
+
+
+
+                  <div class="col-xl-12">
+                    <div class="submit-field">
+                      <br>
+                      <h5>Project Description</h5>
+                      <textarea cols="30" rows="5" class="with-border" id="description"name="description" required [(ngModel)]="projectRetrieved.description" ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+        </div>
+
+        <div class="col-xl-12">
+          <button class="button ripple-effect big margin-top-30" type="submit"><i class="icon-feather-plus"></i>Edit Project</button>
+        </div>
+      </form>
+      <!-- Row / End -->
+
+
+    </div>
+  </div>
+  <!-- Dashboard Content / End -->

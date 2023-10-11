@@ -1,0 +1,115 @@
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Login</h2>
+
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li>Login</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+  <div class="row">
+    <div class="col-xl-5 offset-xl-3">
+      <div class="login-register-page">
+        <!-- Welcome Text -->
+        <div class="welcome-text">
+          <h3>We're glad to see you again!</h3>
+          <span
+            >Don't have an account?
+            <a [routerLink]="'/register'">Sign Up! {{ ipAddress }}</a></span
+          >
+        </div>
+
+        <!-- Form -->
+        <form method="post" id="login-form">
+          <div class="input-with-icon-left">
+            <i class="icon-material-baseline-mail-outline"></i>
+            <input
+              type="text"
+              class="input-text with-border"
+              name="username"
+              id="username"
+              placeholder="Username ex : chika00"
+              required
+              [(ngModel)]="username"
+            />
+          </div>
+
+          <div class="input-with-icon-left">
+            <i class="icon-material-outline-lock"></i>
+            <input
+              type="password"
+              class="input-text with-border"
+              name="password"
+              id="password"
+              placeholder="Password ex : chika "
+              required
+              [(ngModel)]="password"
+            />
+          </div>
+          <a [routerLink]="'/reset'" class="forgot-password"
+            >Forgot Password?</a
+          >
+
+          <!-- Button -->
+          <button
+            class="button full-width button-sliding-icon ripple-effect margin-top-10"
+            (click)="authenticate()"
+            form="login-form"
+          >
+            Log In <i class="icon-material-outline-arrow-right-alt"></i>
+          </button>
+
+          <!-- Social Login -->
+          <div class="social-login-separator"><span>or</span></div>
+          <div class="social-login-buttons">
+            <button class="facebook-login ripple-effect">
+              <i class="icon-brand-facebook-f"></i> Log In via Facebook
+            </button>
+            <button class="google-login ripple-effect">
+              <i class="icon-brand-google-plus-g"></i> Log In via Google+
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Spacer -->
+<div class="margin-top-70"></div>
+<!-- Spacer / End-->
+<!--   
+<table class="table">
+	<thead>
+	  <tr>
+		<th scope="col">Showing the user infos 4 Test</th>
+		<th scope="col">Firstname </th>
+		<th scope="col">Lastname</th>
+		<th scope="col">Username</th>
+	  </tr>
+	</thead>
+	<tbody>
+	  <tr *ngFor="let p of userList">
+		
+		<td>{{p.firstname}}</td>
+		<td>{{p.lastname}}</td>
+		<td>{{p.username}}</td>
+		<td>{{p.password}}</td>
+		<td>{{p.email}}</td>
+	  </tr>
+	</tbody>
+  </table> -->

@@ -1,0 +1,392 @@
+<div id="titlebar" class="gradient">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Checkout</h2>
+
+        <!-- Breadcrumbs -->
+        <nav id="breadcrumbs" class="dark">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Pricing Plans</a></li>
+            <li>Checkout</li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Content
+================================================== -->
+<!-- Default Inputs
+================================================== -->
+<!-- Container -->
+<div class="container">
+  <div class="row">
+    <!-- Dashboard Box -->
+    <div class="col-xl-12">
+      <div class="dashboard-box margin-top-0">
+        <!-- Headline -->
+        <div class="headline">
+          <h3><i class="icon-feather-folder-plus"></i> Job Submission Form</h3>
+        </div>
+        <div class="content with-padding padding-bottom-10">
+          <div class="row">
+            <form #myForm="ngForm" (ngSubmit)="add()">
+              <div class="row">
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Name</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      
+                      name="name"
+                      [(ngModel)]="cmp.name"
+                      required
+                      #nameInput="ngModel"
+                      [class.is-invalid]="
+                        nameInput.invalid && nameInput.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="nameInput.errors && nameInput.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="nameInput.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="nameInput.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Email</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="email"
+                      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                      [(ngModel)]="cmp.email"
+                      required
+                      #emailInput="ngModel"
+                      [class.is-invalid]="
+                      emailInput.invalid && emailInput.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="emailInput.errors && emailInput.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="emailInput.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="emailInput.errors['required']"
+                      >
+                        date is required
+                    </span>
+                    <span class="text-danger" *ngIf="emailInput.errors['pattern']">invalid
+                      email</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>Address</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="adress"
+                      name="adress"
+                      [(ngModel)]="cmp.address"
+                      required
+                      #adressInput="ngModel"
+                      [class.is-invalid]="
+                      adressInput.invalid && adressInput.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="adressInput.errors && adressInput.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="adressInput.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="adressInput.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>codefiscal</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="codefiscal"
+                      name="codefiscal"
+                      [(ngModel)]="cmp.codefiscal"
+                      required
+                      #codefiscalInput="ngModel"
+                      [class.is-invalid]="
+                      codefiscalInput.invalid && codefiscalInput.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="codefiscalInput.errors && codefiscalInput.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="codefiscalInput.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="codefiscalInput.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>number</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="number"
+                      name="number"
+                      [(ngModel)]="cmp.number"
+                      required
+                      #numberInput="ngModel"
+                      [class.is-invalid]="
+                      numberInput.invalid && numberInput.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="numberInput.errors && numberInput.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="numberInput.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="numberInput.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>nameuser</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nameuser"
+                      name="nameuser"
+                      [(ngModel)]="cmp.nameuser"
+                      required
+                      #nameuser="ngModel"
+                      [class.is-invalid]="
+                        nameuser.invalid && nameuser.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="nameuser.errors && nameuser.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="nameuser.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="nameuser.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>lastnameuser</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="lastnuser"
+                      name="lastnuser"
+                      [(ngModel)]="cmp.lastnuser"
+                      required
+                      #lastnuser="ngModel"
+                      [class.is-invalid]="
+                      lastnuser.invalid && lastnuser.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="lastnuser.errors && lastnuser.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="lastnuser.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="lastnuser.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>emailUser</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="emailUser"
+                      name="emailUser"
+                      [(ngModel)]="cmp.emailUser"
+                      required
+                      #emailUser="ngModel"
+                      [class.is-invalid]="
+                      emailUser.invalid && emailUser.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="emailUser.errors && emailUser.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="emailUser.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="emailUser.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="col-xl-4">
+                  <div class="submit-field">
+                    <h5>password</h5>
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                      [(ngModel)]="cmp.password"
+                      required
+                      #password="ngModel"
+                      [class.is-invalid]="
+                      password.invalid && password.touched
+                      "
+                      required
+                    />
+
+                    <div *ngIf="password.errors && password.touched">
+                      <span
+                        class="text-danger"
+                        *ngIf="password.errors['required']"
+                      >
+                      </span>
+                      <span
+                        class="text-danger"
+                        *ngIf="password.errors['required']"
+                      >
+                        date is required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                
+                  <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   
+  </div>
+ 
+
+<!-- Container -->
+<div class="container">
+  <div class="row">
+    <div class="col-xl-8 col-lg-8 content-right-offset">
+      <!-- Hedline -->
+      <h3 class="margin-top-50">Payment Method</h3>
+
+      <!-- Payment Methods Accordion -->
+      <div class="payment margin-top-30">
+        <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+      </div>
+      <!-- Payment Methods Accordion / End -->
+
+      <a
+        href="pages-order-confirmation.html"
+        class="button big ripple-effect margin-top-40 margin-bottom-65"
+        >Proceed Payment</a
+      >
+    </div>
+
+    <!-- Summary -->
+    <div class="col-xl-4 col-lg-4 margin-top-0 margin-bottom-60">
+      <!-- Summary -->
+      <div class="boxed-widget summary margin-top-0">
+        <div class="boxed-widget-headline">
+          <h3>Summary</h3>
+        </div>
+        <div class="boxed-widget-inner">
+          <ul>
+            <li>Standard Plan <span>$49.00</span></li>
+            <li>VAT (20%) <span>$9.80</span></li>
+            <li class="total-costs">Final Price <span>$58.80</span></li>
+          </ul>
+        </div>
+      </div>
+      <!-- Summary / End -->
+
+      <!-- Checkbox -->
+      <div class="checkbox margin-top-30">
+        <input type="checkbox" id="two-step" />
+        <label for="two-step"
+          ><span class="checkbox-icon"></span> I agree to the
+          <a href="#">Terms and Conditions</a> and the
+          <a href="#">Automatic Renewal Terms</a></label
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Container / End -->

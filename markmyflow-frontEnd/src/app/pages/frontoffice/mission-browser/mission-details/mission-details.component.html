@@ -1,0 +1,130 @@
+
+<!-- Titlebar
+================================================== -->
+<div class="single-page-header" data-background-image="../../../../assets/images/single-task.jpg">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="single-page-header-inner">
+					<div class="left-side">
+						<div class="header-image"><a href="single-company-profile.html"><img src="../../../../assets/images/browse-companies-02.png" alt=""></a></div>
+						<div class="header-details">
+							<h3>{{mission.titleMission}}</h3>
+							<h5>About the mission</h5>
+							<ul>
+								<!-- <li><a href="single-company-profile.html"><i class="icon-material-outline-business"></i> Acue</a></li>
+								<li><div class="star-rating" data-rating="5.0"></div></li>
+								<li><img class="flag" src="../../../../assets/images/flags/de.svg" alt=""> Germany</li> -->
+								<!-- <li><div class="verified-badge-with-title">Verified</div></li> -->
+							</ul>
+						</div>
+					</div>
+					<div class="right-side">
+						<div class="salary-box">
+							<div class="salary-type">Payment</div>
+							<div class="salary-amount">{{mission.priceMission}} DT</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		
+		<!-- Content -->
+		<div class="col-xl-8 col-lg-8 content-right-offset">
+			
+			<!-- Description -->
+			<div class="single-page-section">
+				<h3 class="margin-bottom-25">Project Description</h3>
+				 {{mission.descriptionMission}}
+			</div>
+
+			<!-- Atachments -->
+			<div class="single-page-section">
+				<h3>Attachments</h3>
+				<div class="attachments-container">
+					<a href="#" class="attachment-box ripple-effect"><span>Project Brief</span><i>PDF</i></a>
+				</div>
+			</div>
+
+			<!-- Skills -->
+			<!-- <div class="single-page-section">
+				<h3>Skills Required</h3>
+				<div class="task-tags">
+					<span>iOS</span>
+					<span>Android</span>
+					<span>mobile apps</span>
+					<span>design</span>
+				</div>
+			</div> -->
+			<div class="clearfix"></div>
+			
+		
+
+		</div>
+		
+
+		<!-- Sidebar -->
+		<div class="col-xl-4 col-lg-4">
+			<div class="sidebar-container">
+
+				<div class="countdown green margin-bottom-35">Required before : {{mission.deadlineMission}}</div>
+
+				<div class="sidebar-widget">
+					<div class="bidding-widget">
+						<div class="bidding-headline"><h3>Apply for this mission!</h3></div>
+						<div class="bidding-inner">
+
+						
+							<!-- <span class="bidding-detail">Set your <strong>minimal rate</strong></span>
+
+				
+							<div class="bidding-value">DT<span id="biddingVal"></span></div>
+							<input class="bidding-slider" type="text" value="" data-slider-handle="custom" data-slider-currency="$" data-slider-min="2500" data-slider-max="4500" data-slider-value="auto" data-slider-step="50" data-slider-tooltip="hide" />
+							 -->
+					
+							<!-- <span class="bidding-detail margin-top-30">Set your <strong>delivery time</strong></span> -->
+
+<!-- 		
+							<div class="bidding-fields">
+								<div class="bidding-field">
+
+									<div class="qtyButtons">
+										<div class="qtyDec"></div>
+										<input type="text" name="qtyInput" value="1">
+										<div class="qtyInc"></div>
+									</div>
+								</div>
+								<div class="bidding-field">
+									<select class="selectpicker default">
+										<option selected>Days</option>
+										<option>Hours</option>
+									</select>
+								</div>
+							</div> -->
+
+							<!-- Button -->
+							<button id="snackbar-place-bid" class="button ripple-effect move-on-hover full-width margin-top-30" (click)="apply()" [disabled]="disable"><span *ngIf="!disable">Click Here !</span> <span *ngIf="disable">Already applied !</span></button>
+
+						</div>
+						<!-- <div class="bidding-signup">Don't have an account? <a href="#sign-in-dialog" class="register-tab sign-in popup-with-zoom-anim">Sign Up</a></div> -->
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+<!-- Spacer -->
+<div class="margin-top-15"></div>

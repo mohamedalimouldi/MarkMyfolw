@@ -1,0 +1,112 @@
+
+<!-- Titlebar
+================================================== -->
+<div id="titlebar" class="gradient">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+
+				<h2>Browse Projects</h2>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Find Work</a></li>
+						<li>Browse Projects</li>
+					</ul>
+				</nav>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Page Content
+================================================== -->
+<div class="container">
+	<div class="row">
+		<div class="col-xl-3 col-lg-4">
+			<div class="sidebar-container">
+        <br>
+				<!-- Location -->
+				<div class="sidebar-widget">
+					<h3>Search</h3>
+					<div class="input-with-icon">
+						<div id="autocomplete-container">
+							<input type="text" [(ngModel)]="searchTerm" placeholder="Search for a project..." (keyup)="onSearch()" >
+						</div>
+						<i class="icon-material-outline-search"></i>
+					</div>
+				</div>
+
+				<!-- Category -->
+        <a [routerLink]="['/dashboard/projectworkflow/add']" class="apply-now-button popup-with-zoom-anim">Create Project<i class="icon-material-outline-add"></i></a>
+
+
+				<!-- Budget -->
+
+
+			</div>
+		</div>
+		<div class="col-xl-9 col-lg-8 content-left-offset">
+
+			<h3 class="page-title">Search Results</h3>
+
+
+			<!-- Tasks Container -->
+			<div class="tasks-list-container compact-list margin-top-35">
+
+				<!-- Task -->
+				<a class="task-listing" *ngFor="let project of filteredData">
+
+					<!-- Job Listing Details -->
+					<div class="task-listing-details">
+
+						<!-- Details -->
+						<div class="task-listing-description">
+							<h3 class="task-listing-title">{{project.name}}</h3>
+							<ul class="task-icons">
+								<li><i class="icon-line-awesome-calendar-o"></i> Debute : {{project.debute}} - </li>
+                <li><i class="icon-line-awesome-calendar-times-o"></i> Deadline :  {{project.deadline}}</li>
+							</ul>
+							<p class="task-listing-text">{{project.description}}</p>
+							<div class="task-tags">
+								<span *ngIf="this.calculateDiff(project.debute)>0"> {{this.calculateDiff(project.debute)}} Days to start</span>
+								<span *ngIf="this.calculateDiff(project.debute)<0">Project already started</span>
+
+							</div>
+						</div>
+
+					</div>
+
+					<div class="task-listing-bid">
+						<div class="task-listing-bid-inner">
+							<div class="task-offers">
+								<strong>{{project.status}}</strong>
+								<span>Status</span>
+							</div>
+							<span class="button button-sliding-icon ripple-effect" [routerLink]="['/dashboard/projectworkflow/details', project.id]">Details<i class="icon-material-outline-arrow-right-alt"></i></span>
+						</div>
+					</div>
+				</a>
+
+				<!-- Task -->
+
+				<!-- Task -->
+
+
+				<!-- Task -->
+
+
+				<!-- Task -->
+
+			</div>
+			<!-- Tasks Container / End -->
+
+
+
+		</div>
+	</div>
+</div>

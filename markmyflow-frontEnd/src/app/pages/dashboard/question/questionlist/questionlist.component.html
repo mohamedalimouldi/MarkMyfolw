@@ -1,0 +1,153 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row flex-lg-nowrap">
+  <div class="col-12 col-lg-auto mb-3" style="width: 200px;">
+    <div class="card p-3">
+      <div class="e-navlist e-navlist--active-bg">
+        <ul class="nav">
+          <li class="nav-item"><a class="nav-link px-2 active" href="#"><i class="fa fa-fw fa-bar-chart mr-1"></i><span>Overview</span></a></li>
+          <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-crud-users" target="__blank"><i class="fa fa-fw fa-th mr-1"></i><span>CRUD</span></a></li>
+          <li class="nav-item"><a class="nav-link px-2" href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page" target="__blank"><i class="fa fa-fw fa-cog mr-1"></i><span>Settings</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="e-tabs mb-3 px-3">
+      <ul class="nav nav-tabs">
+        <li class="nav-item"><a class="nav-link active" href="#">Quiz</a></li>
+      </ul>
+    </div>
+
+    <div  class="row flex-lg-nowrap"  id="id-">
+      <div  class="col mb-3">
+        <div class="e-panel card">
+          <div *ngFor="let x of qu let i=index " class="card-body">
+            <div class="card-title">
+              <h6 class="mr-2"><span>Users</span><small class="px-1">Be a wise leader</small></h6>
+            </div>
+            <div class="e-table">
+              <div class="table-responsive table-lg mt-3">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="align-top">
+                        <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0">
+                          <input type="checkbox" class="custom-control-input" id="all-items">
+                          <label class="custom-control-label" for="all-items"></label>
+                        </div>
+                      </th>
+                      <th class="max-width">ID</th>
+                      <th class="max-width">question</th>
+                      <th class="sortable">propositionvrai</th>
+                      <th>Actions</th>
+                      <a routerLink="/dashboard/question/updatequestion/{{x.idq}}"> EDIT</a>
+                      <th></th>
+                      <a class="button gray ripple-effect ico" title="Remove" (click)="delete(x.idq,i)" data-tippy-placement="top"><i class="icon-feather-trash-2"></i></a>
+
+                      <th> </th> 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="align-middle">
+                        <div class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                          <input type="checkbox" class="custom-control-input" id="item-1">
+                          <label class="custom-control-label" for="item-1"></label>
+                        </div>
+                      </td>
+                      <td class="align-middle text-center">{{x.idq}}
+                      </td>
+                      <td class="text-nowrap align-middle">{{x.question}}</td>
+                      <td class="text-nowrap align-middle"><span>{{x.propvrai}}</span></td>
+                      <td class="text-center align-middle"><i class="fa fa-fw text-secondary cursor-pointer fa-toggle-on"></i></td>
+                      <td class="text-center align-middle">
+                       
+                      </td>
+                    </tr>
+                
+                  </tbody>
+                </table>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col mb-3">
+        <div class="e-panel card">
+          <div class="card-body">
+            <div class="text-center px-xl-3">
+              <a routerLink="/dashboard/question/addquestion"> new question</a>
+            </div>
+            <hr class="my-3">
+            <div class="e-navlist e-navlist--active-bold">
+              <ul class="nav">
+                <li class="nav-item active"><a href="" class="nav-link"><span>All</span>&nbsp;<small>/&nbsp;32</small></a></li>
+                <li class="nav-item"><a href="" class="nav-link"><span>Active</span>&nbsp;<small>/&nbsp;16</small></a></li>
+                <li class="nav-item"><a href="" class="nav-link"><span>Selected</span>&nbsp;<small>/&nbsp;0</small></a></li>
+              </ul>
+            </div>
+            <hr class="my-3">
+            <div>
+              <div class="form-group">
+                <label>Date from - to:</label>
+                <div>
+                  <input id="dates-range" class="form-control flatpickr-input" placeholder="01 Dec 17 - 27 Jan 18" type="text" readonly="readonly">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Search by Name:</label>
+                <div><input class="form-control w-100" type="text" placeholder="Name" value=""></div>
+              </div>
+            </div>
+            <hr class="my-3">
+            <div class="">
+              <label>Status:</label>
+              <div class="px-2">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" name="user-status" id="users-status-disabled">
+                  <label class="custom-control-label" for="users-status-disabled">Disabled</label>
+                </div>
+              </div>
+              <div class="px-2">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" name="user-status" id="users-status-active">
+                  <label class="custom-control-label" for="users-status-active">Active</label>
+                </div>
+              </div>
+              <div class="px-2">
+                <div class="custom-control custom-radio">
+                  <input type="radio" class="custom-control-input" name="user-status" id="users-status-any" checked="">
+                  <label class="custom-control-label" for="users-status-any">Any</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Form Modal -->
+   <!-- <form (ngSubmit)="addquiz()">
+
+      <input type="text" name="test" [(ngModel)]="test.idv" placeholder="entre validation id" />
+      <input type="text" name="test" [(ngModel)]="test.duree" placeholder="entre validation duree" />
+  
+      <textarea type="text" name="test" [(ngModel)]="test.titre" placeholder="entre validation titre"></textarea> 
+  
+      <button type="submit  ">add quiz </button>
+  
+  </form>-->
+   
+   
+          <div class="modal-body">
+            <div class="py-1">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  

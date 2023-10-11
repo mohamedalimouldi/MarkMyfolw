@@ -1,0 +1,138 @@
+
+	<!--									
+<div class="modal fade" #Modal id="exampleModal"  data-bs-backdrop="false" style=" z-index: 9999" tabindex="9999" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" style=" z-index: 9999">
+	  <div class="modal-content" style=" z-index: 9999">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalLabel">Add document</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" #closeModal aria-label="Close"></button>
+		</div>
+		<form  [formGroup]="DocForm" (ngSubmit)="submit()" >
+
+		<div class="modal-body">
+			<div class="mb-3">
+			  <label for="text" class="col-form-label">Name:</label>
+			  <input type="text" class="form-control" id="text"  formControlName = "text">
+			  <span class="help-block" *ngIf="!DocForm.get('text').valid">
+			  <span *ngIf = "DocForm.get('text').errors['required']">field is required</span>
+			  </span>
+			</div>
+			<div class="mb-3">
+				<label for="text" class="col-form-label">Fields:</label>
+				<tag-input 
+				(onSelect)="onSelect($event)"
+				formControlName = "fields"
+				[modelAsStrings]="true">
+	 		</tag-input>
+			 <span class="help-block" *ngIf="!DocForm.get('fields').valid">
+				<span *ngIf = "DocForm.get('fields').errors['required']">field is required</span>
+				</span>
+			</div>
+			<div class="mb-3">
+				<label for="file">File</label>
+				<input 
+					formControlName="file"
+					id="file" 
+					type="file" 
+					class="form-control"
+					(change)="onFileChange($event)">
+				<div *ngIf="!DocForm.get('file').valid" class="alert alert-danger">
+					<div *ngIf="DocForm.get('file').errors['required']">File is required.</div>
+				</div>
+
+
+
+			</div>
+		
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+
+	  </div>
+	</div>
+  </div>
+  -->	
+		<div class="dashboard-content-inner" >
+			
+			<!-- Dashboard Headline -->
+			<div class="dashboard-headline">
+				<h3>Manage Docs</h3>
+
+				<!-- Breadcrumbs -->
+				<nav id="breadcrumbs" class="dark">
+					<ul>
+						<li><a href="#">Home</a></li>
+						<li><a href="#">Dashboard</a></li>
+						<li>Manage Intents</li>
+					</ul>
+				</nav>
+			</div>
+	
+			<!-- Row -->
+			<div class="row">
+
+				<!-- Dashboard Box -->
+				<div class="col-xl-12">
+					<div class="dashboard-box margin-top-0">
+
+						<!-- Headline -->
+						<div class="headline">
+							<h3><i class="icon-material-outline-business-center"></i> Intents</h3>
+						</div>
+
+
+						<div class="content">
+						    <ng2-smart-table [settings]="settings" [source]="source" (edit)="onEdit($event)" (delete)="onDelete($event)" (create)="onCreate($event)"></ng2-smart-table>
+
+
+
+						</div>
+
+
+					</div>
+				</div>
+
+			</div>
+			<!-- Row / End -->
+
+			<!-- Footer -->
+		<!-- Footer -->
+		
+        <div class="dashboard-footer-spacer"></div>
+        <div class="small-footer margin-top-15">
+            <div class="small-footer-copyrights">
+                © 2018 <strong>Hireo</strong>. All Rights Reserved.
+            </div>
+            <ul class="footer-social-links">
+                <li>
+                    <a href="#" title="Facebook" data-tippy-placement="top">
+                        <i class="icon-brand-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Twitter" data-tippy-placement="top">
+                        <i class="icon-brand-twitter"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="Google Plus" data-tippy-placement="top">
+                        <i class="icon-brand-google-plus-g"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" title="LinkedIn" data-tippy-placement="top">
+                        <i class="icon-brand-linkedin-in"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+        <!-- Footer / End -->
+			<!-- Footer / End -->
+
+		</div>
+
+	
