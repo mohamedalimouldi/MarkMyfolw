@@ -1,0 +1,6 @@
+gitops:
+  manifest_projects:
+  - id: "arctic-monkeys/k8s"
+    paths:
+    - glob: "/**/*.yaml"
+

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: advisor
+          image: registry.gitlab.com/arctic-monkeys/advisormicroservice
+          ports:
+            - containerPort: 8100
+          imagePullPolicy: Always
+        - name: discovery
+          image: registry.gitlab.com/arctic-monkeys/discoveryserver
+          ports:
+            - containerPort: 8761
+          imagePullPolicy: Always
+        - name: apigateway
+          image: registry.gitlab.com/arctic-monkeys/apigateway
+          ports:
+            - containerPort: 8000
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: secret
